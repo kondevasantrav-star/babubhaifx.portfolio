@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BabuBhaiFX | Professional Minecraft Designer</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background: #06060c;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Ambient Glow Backgrounds */
+    .glow-cyan {
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: 300px;
+      height: 300px;
+      background: #00f2fe;
+      filter: blur(150px);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .glow-violet {
+      position: fixed;
+      bottom: 10%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: #7f00ff;
+      filter: blur(150px);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(10, 10, 18, 0.6);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(45deg, #00f2fe, #7f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .order-btn {
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #00f2fe, #7f00ff);
+      border-radius: 50px;
+      color: #06060c;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    }
+
+    .order-btn:hover {
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 60px 8% 40px;
+    }
+
+    /* PFP Styling */
+    .hero-image {
+      margin-bottom: 30px;
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+
+    .pfp-glow {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #00f2fe, #7f00ff);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+      z-index: 1;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+      object-fit: cover;
+      border: 4px solid #06060c;
+    }
+
+    .hero-text h3 {
+      color: #7f00ff;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .cyan-text {
+      color: #00f2fe;
+      text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    }
+
+    .hero-text p {
+      color: #b0b0bc;
+      line-height: 1.6;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+
+    .price-tag {
+      display: inline-block;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      color: #00f2fe;
+      margin-bottom: 30px;
+    }
+
+    .social-handles {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .social-box {
+      background: #111122;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .dc-span { color: #00f2fe; font-weight: bold; }
+    .ig-span { color: #7f00ff; font-weight: bold; }
+
+    /* Work Section */
+    .portfolio-section {
+      padding: 40px 5% 80px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .section-title span {
+      color: #00f2fe;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .work-card {
+      background: #111122;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+      border-color: #00f2fe;
+      box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .card-meta {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-meta h4 {
+      font-size: 16px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-cyan"></div>
+  <div class="glow-violet"></div>
+
+  <nav>
+    <div class="logo">BabuBhaiFX</div>
+    <a href="https://discord.com" class="order-btn">Order Now</a>
+  </nav>
+
+  <section class="hero">
+    
+    <div class="hero-image">
+      <div class="pfp-glow"></div>
+      <img src="https://via.placeholder.com/150/0a0a12/00f2fe?text=BabuBhaiFX" id="pfp-img" alt="BabuBhaiFX">
+    </div>
+
+    <div class="hero-text">
+      <h3>Expert Freelancer</h3>
+      <h1>High Quality <br><span class="cyan-text">Minecraft Designs</span></h1>
+      <p>
+        Specializing in crafting high-quality, eye-catching Minecraft thumbnails and unique server logos. Get premium custom graphics delivered quickly at highly affordable and budget-friendly rates!
+      </p>
+      
+      <div class="price-tag">
+        ⚡ Premium Quality at Budget Pricing
+      </div>
+      
+      <div class="social-handles">
+        <div class="social-box">Discord: <span class="dc-span">babubhaifx</span></div>
+        <div class="social-box">Instagram: <span class="ig-span">@babubhai.fx</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section">
+    <h2 class="section-title">Recent <span>Samples</span></h2>
+    
+    <div class="grid-container">
+      
+      <div class="work-card">
+        <img src="https://via.placeholder.com/400x250/111122/00f2fe?text=Thumbnail+Sample+1" id="thumb1" alt="Sample 1">
+        <div class="card-meta">
+          <h4>Minecraft Hype Thumbnail</h4>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <img src="https://via.placeholder.com/400x250/111122/7f00ff?text=Thumbnail+Sample+2" id="thumb2" alt="Sample 2">
+        <div class="card-meta">
+          <h4>SMP Survival Thumbnail</h4>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <img src="https://via.placeholder.com/400x250/111122/00f2fe?text=Logo+Sample" id="thumb3" alt="Sample 3">
+        <div class="card-meta">
+          <h4>Custom Server Logo</h4>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <img src="https://via.placeholder.com/400x250/111122/7f00ff?text=Thumbnail+Sample+3" id="thumb4" alt="Sample 4">
+        <div class="card-meta">
+          <h4>PvP Montage Thumbnail</h4>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
